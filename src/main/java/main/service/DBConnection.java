@@ -39,15 +39,14 @@ public class DBConnection {
         return rSet;
     }
 
-//    public void executeQuery(String query) throws SQLException {
-//        st = conn.createStatement();
-//        st.executeUpdate(query);
-//    }
+
+    //    public int getUpdatedRows() {
+//        try {
+//            return statement.getUpdateCount();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
 //
-//    public ResultSet getRSet(String query) throws SQLException {
-//        st = conn.createStatement();
-//        rSet = st.executeQuery(query);
-//
-//        return rSet;
+//        return 0;
 //    }
 }
