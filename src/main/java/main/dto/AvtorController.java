@@ -23,7 +23,7 @@ public class AvtorController {
     }
 
     public void updateAvtor(int id, Avtor avtor) throws SQLException {
-        connection.executeQuery("UPDATE avtor SET fam = '" + avtor.getFam() + "', name = '" + avtor.getName() + "', god_r = " + avtor.getGod_r() + ", pol = '"
+        connection.executeQuery("update avtor set fam = '" + avtor.getFam() + "', name = '" + avtor.getName() + "', god_r = " + avtor.getGod_r() + ", pol = '"
                 + avtor.getPol() + "' where kod_avtor = " + id + "");
         System.out.println("affected: " + connection.getUpdateCount());
     }
@@ -74,9 +74,12 @@ public class AvtorController {
             final int god_r = set.getInt("god_r");
             final Character pol = set.getString("pol").charAt(0);
 
-            System.out.println(name + " " + fam + " " + god_r + " " + pol);
+            String res = name + " " + fam + " " + god_r + " " + pol;
+            System.out.println(new String(res.getBytes("UTF-8"), "windows-1251"));
 
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
     }
