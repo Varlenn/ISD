@@ -31,9 +31,20 @@ public class AvtorController {
     }
 
     // функция отправки запроса на удаление записи
+    public void deleteAvtorSQL(String id) {
+        try {
+            connection.executeQuery("delete from avtor where kod_avtor=" + id + "");
+
+            System.out.println("affected: " + connection.getUpdateCount());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void deleteAvtor(String id) {
         try {
-            final PreparedStatement statement = connection.getConnection().prepareStatement("delete from avtor where kod_avtor=" + id + "");
+            final PreparedStatement statement = connection.getConnection().prepareStatement("delete from avtor where kod_avtor=?");
+            statement.setInt(1, Integer.parseInt(id));
             statement.execute();
 
             System.out.println("affected: " + statement.getUpdateCount());
@@ -76,9 +87,7 @@ public class AvtorController {
             String res = name + " " + fam + " " + god_r + " " + pol;
             System.out.println(new String(res.getBytes("UTF-8"), "windows-1251"));
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
+        } catch (SQLException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
     }

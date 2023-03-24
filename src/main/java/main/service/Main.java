@@ -18,11 +18,14 @@ public class Main {
         // вызов функции добавления нового автора
         avtorController.insertAvtor(avtor);
         // вызов функции обновления автора по id
-        avtorController.updateAvtor(14, new Avtor("Романова", "Елизавета", 1900, 'ж'));
-        // вызов функции удаления автора по id
-        avtorController.deleteAvtor("25");
+        avtorController.updateAvtor(33, new Avtor("Романова", "Елизавета", 1900, 'ж'));
         // вызов функции вывода всей информации об авторе по id
-        avtorController.absoluteSelect(6);
+        avtorController.absoluteSelect(33);
+        // вызов функции удаления автора по id с предподготовленной переменной
+        avtorController.deleteAvtor("35 or kod_avtor = 36");
+        // вызов функции удаления автора по id с SQL инъекцией
+        avtorController.deleteAvtor("35 or kod_avtor = 36");
+
 
         // вызов функции добавления новых авторов путем чтения данных из файла
         for (final Avtor avtorFromFile : AvtorController.insertAvtorsFromFile("src/main/resources/import.txt")) {
