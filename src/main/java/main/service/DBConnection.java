@@ -1,6 +1,7 @@
 package main.service;
 
 import java.sql.*;
+import java.util.Properties;
 
 public class DBConnection {
     private Statement statement;
@@ -13,7 +14,11 @@ public class DBConnection {
         try {
             Class.forName("org.postgresql.Driver");
 
-            connection = DriverManager.getConnection(url, "st0092", "qwerty92");
+            final Properties properties = new Properties();
+            properties.setProperty("user", "st0092");
+            properties.setProperty("password", "qwerty92");
+            properties.setProperty("charSet", "UTF-8");
+            connection = DriverManager.getConnection(url, properties);
             statement = connection.createStatement();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
