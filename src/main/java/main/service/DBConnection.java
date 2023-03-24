@@ -14,11 +14,7 @@ public class DBConnection {
         try {
             Class.forName("org.postgresql.Driver");
 
-            final Properties properties = new Properties();
-            properties.setProperty("user", "st0092");
-            properties.setProperty("password", "qwerty92");
-            properties.setProperty("charSet", "UTF-8");
-            connection = DriverManager.getConnection(url, properties);
+            connection = DriverManager.getConnection(url, "st0092", "qwerty92");
             statement = connection.createStatement();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
