@@ -37,21 +37,20 @@ public class DBConnection {
         return statement.getUpdateCount();
     }
 
+    public int getUpdatedRows() {
+        try {
+            return statement.getUpdateCount();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
     public ResultSet getRSet(String query) throws SQLException {
         statement = connection.createStatement();
         rSet = statement.executeQuery(query);
 
         return rSet;
     }
-
-
-    //    public int getUpdatedRows() {
-//        try {
-//            return statement.getUpdateCount();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return 0;
-//    }
 }

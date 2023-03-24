@@ -2,9 +2,7 @@ package main.dto;
 
 import main.service.DBConnection;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -87,8 +85,10 @@ public class AvtorController {
         final List<Avtor> list = new ArrayList<>();
 
         try {
-            final BufferedReader fileReader = new BufferedReader(new FileReader(filePath));
-            String line = fileReader.readLine();
+            final BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(
+                            new FileInputStream(filePath), "UTF8"));
+            String line = reader.readLine();
             while (line != null) {
                 final String[] args = line.split(",");
                 final String name = args[0];
@@ -96,7 +96,7 @@ public class AvtorController {
                 final int god_r = Integer.parseInt(args[2]);
                 final Character pol = args[3].charAt(0);
 
-                line = fileReader.readLine();
+                line = reader.readLine();
                 list.add(new Avtor(name, fam, god_r, pol));
             }
         } catch (NumberFormatException | IOException e) {

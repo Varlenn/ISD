@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
         DBConnection dbConn = new DBConnection();
-        Avtor avtor = new Avtor("Иван", "Иванов", 1879, 'м');
+//        Avtor avtor = new Avtor("Иван", "Иванов", 1879, 'м');
 
         AvtorController avtorController = new AvtorController(dbConn);
 
@@ -18,9 +18,9 @@ public class Main {
 //        avtorController.deleteAvtor("25");
         avtorController.absoluteSelect(5);
 
-//        for (final Avtor avtor : AvtorController.insertAvtorsFromFile("src/main/resources/import.txt")) {
-//            avtorController.insertAvtor(avtor);
-//        }
+        for (final Avtor avtor : AvtorController.insertAvtorsFromFile("src/main/resources/import.txt")) {
+            avtorController.insertAvtor(avtor);
+        }
 
         System.out.println("Найдено строк: " + avtorController.selectAvtors().size());
     }
