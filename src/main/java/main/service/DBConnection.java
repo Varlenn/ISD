@@ -1,13 +1,13 @@
 package main.service;
-
 import java.sql.*;
-import java.util.Properties;
+
 
 public class DBConnection {
     private Statement statement;
     private Connection connection;
     ResultSet rSet = null;
 
+    // создание подключения
     public DBConnection() {
         System.out.println("Connecting to database ...\n");
         final String url = "jdbc:postgresql://172.20.8.18:5432/db0092_22";
@@ -21,32 +21,37 @@ public class DBConnection {
         }
     }
 
+    // функция, возвращающая подключение
     public Connection getConnection() {
         return connection;
     }
 
+    // функция, исполняющая пришедший запрос
     public void executeQuery(String query) throws SQLException {
         statement.executeUpdate(query);
     }
 
+    // функция, возвращающая количество обновленных строк
     public int getUpdateCount() throws SQLException {
         return statement.getUpdateCount();
     }
 
-    public int getUpdatedRows() {
-        try {
-            return statement.getUpdateCount();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return 0;
-    }
-
+    // функция, возвращающая набор результатов по запросу
     public ResultSet getRSet(String query) throws SQLException {
         statement = connection.createStatement();
         rSet = statement.executeQuery(query);
 
         return rSet;
     }
+
+
+//    public int getUpdatedRows() {
+//        try {
+//            return statement.getUpdateCount();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return 0;
+//    }
 }

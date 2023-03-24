@@ -1,7 +1,5 @@
 package main.dto;
-
 import main.service.DBConnection;
-
 import java.io.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,24 +8,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AvtorController {
-    private final DBConnection connection;
 
+    private final DBConnection connection;
     public AvtorController(DBConnection connection) {
         this.connection = connection;
     }
 
+    // функция отправки запроса на добавление записи
     public void insertAvtor(Avtor avtor) throws SQLException {
         connection.executeQuery("insert into avtor (name, fam, god_r, pol) values ('" + avtor.getName() + "', '" + avtor.getFam() + "', " +
                 avtor.getGod_r() + ", '" + avtor.getPol() + "')");
+
         System.out.println("affected: " + connection.getUpdateCount());
     }
 
+    // функция отправки запроса на обновление записи
     public void updateAvtor(int id, Avtor avtor) throws SQLException {
         connection.executeQuery("update avtor set fam = '" + avtor.getFam() + "', name = '" + avtor.getName() + "', god_r = " + avtor.getGod_r() + ", pol = '"
                 + avtor.getPol() + "' where kod_avtor = " + id + "");
+
         System.out.println("affected: " + connection.getUpdateCount());
     }
 
+    // функция отправки запроса на удаление записи
     public void deleteAvtor(String id) {
         try {
             final PreparedStatement statement = connection.getConnection().prepareStatement("delete from avtor where kod_avtor=" + id + "");
@@ -39,11 +42,11 @@ public class AvtorController {
         }
     }
 
+    // функция возврата списка всех записей таблицы
     public List<Avtor> selectAvtors() {
         final List<Avtor> list = new ArrayList<>();
 
         try {
-
             final ResultSet set = connection.getRSet("select * from avtor");
             while (set.next()) {
                 final String fam = set.getString("fam");
@@ -59,11 +62,7 @@ public class AvtorController {
         return list;
     }
 
-//    public List<Avtor> absolutePosit(int i) throws SQLException {
-//        Statement statement = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-//        ResultSet.absolute
-//    }
-
+    // функция вывода всей информации о авторе по id
     public void absoluteSelect(int id) {
         try {
             final ResultSet set = connection.getRSet("select * from avtor where kod_avtor=" + id);
@@ -84,6 +83,7 @@ public class AvtorController {
         }
     }
 
+    // функция возвращающая данные об авторе путем чтения файла
     public static List<Avtor> insertAvtorsFromFile(String filePath) {
         final List<Avtor> list = new ArrayList<>();
 
