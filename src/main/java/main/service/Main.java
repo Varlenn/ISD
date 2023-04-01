@@ -1,6 +1,6 @@
 package main.service;
-import main.dto.Avtor;
-import main.dto.AvtorController;
+import main.dto.tables.Avtor;
+import main.dto.controllers.AvtorController;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 

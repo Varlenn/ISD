@@ -1,4 +1,5 @@
-package main.dto;
+package main.dto.controllers;
+import main.dto.tables.Avtor;
 import main.service.DBConnection;
 import java.io.*;
 import java.sql.PreparedStatement;
