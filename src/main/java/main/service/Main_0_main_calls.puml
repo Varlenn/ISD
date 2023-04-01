@@ -1,0 +1,226 @@
+@startuml
+
+/' diagram meta data start
+config=CallConfiguration;
+{
+  "rootMethod": "main.service.Main#main(String[])",
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showMethodParametersTypes": false,
+    "showMethodParametersNames": false,
+    "showMethodReturnType": false,
+    "showPackageLevels": 2,
+    "showCallOrder": false,
+    "edgeMode": "MethodsOnly", // TypesOnly, MethodsOnly, TypesAndMethods, MethodsAndDirectTypeUsage
+    "showDetailedClassStructure": false
+  },
+  "rootClass": "main.service.Main",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="LR"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1984153269 { 
+   	label=service
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1491021945 { 
+   	label=Main
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Main1182002304XXXmain1859653459[
+	label="+ main()"
+	style=filled
+	fillcolor=white
+	tooltip="Main
+
+null"
+	penwidth=4
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_555165098 { 
+   	label=DBConnection
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   DBConnection1182002304XXXexecuteQuery1808118735[
+	label="+ executeQuery()"
+	style=filled
+	fillcolor=white
+	tooltip="DBConnection
+
+null"
+	fontcolor=darkgreen
+];
+
+DBConnection1182002304XXXgetRSet1808118735[
+	label="+ getRSet()"
+	style=filled
+	fillcolor=white
+	tooltip="DBConnection
+
+null"
+	fontcolor=darkgreen
+];
+} 
+} 
+
+subgraph cluster_99807 { 
+   	label=dto
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_895441830 { 
+   	label=AvtorController
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   AvtorController9572310XXXabsoluteSelect104431[
+	label="+ absoluteSelect()"
+	style=filled
+	fillcolor=white
+	tooltip="AvtorController
+
+null"
+	fontcolor=darkgreen
+];
+
+AvtorController9572310XXXdeleteAvtor1808118735[
+	label="+ deleteAvtor()"
+	style=filled
+	fillcolor=white
+	tooltip="AvtorController
+
+null"
+	fontcolor=darkgreen
+];
+
+AvtorController9572310XXXinsertAvtor63659234[
+	label="+ insertAvtor()"
+	style=filled
+	fillcolor=white
+	tooltip="AvtorController
+
+null"
+	fontcolor=darkgreen
+];
+
+AvtorController9572310XXXinsertAvtorsFromFile1808118735[
+	label="+ insertAvtorsFromFile()"
+	style=filled
+	fillcolor=white
+	tooltip="AvtorController
+
+null"
+	fontcolor=darkgreen
+];
+
+AvtorController9572310XXXselectAvtors0[
+	label="+ selectAvtors()"
+	style=filled
+	fillcolor=white
+	tooltip="AvtorController
+
+null"
+	fontcolor=darkgreen
+];
+
+AvtorController9572310XXXupdateAvtor1267207455[
+	label="+ updateAvtor()"
+	style=filled
+	fillcolor=white
+	tooltip="AvtorController
+
+null"
+	fontcolor=darkgreen
+];
+} 
+} 
+
+'edges    
+AvtorController9572310XXXabsoluteSelect104431 -> DBConnection1182002304XXXgetRSet1808118735;
+AvtorController9572310XXXinsertAvtor63659234 -> DBConnection1182002304XXXexecuteQuery1808118735;
+AvtorController9572310XXXselectAvtors0 -> DBConnection1182002304XXXgetRSet1808118735;
+AvtorController9572310XXXupdateAvtor1267207455 -> DBConnection1182002304XXXexecuteQuery1808118735;
+Main1182002304XXXmain1859653459 -> AvtorController9572310XXXabsoluteSelect104431;
+Main1182002304XXXmain1859653459 -> AvtorController9572310XXXdeleteAvtor1808118735;
+Main1182002304XXXmain1859653459 -> AvtorController9572310XXXinsertAvtor63659234;
+Main1182002304XXXmain1859653459 -> AvtorController9572310XXXinsertAvtorsFromFile1808118735;
+Main1182002304XXXmain1859653459 -> AvtorController9572310XXXselectAvtors0;
+Main1182002304XXXmain1859653459 -> AvtorController9572310XXXupdateAvtor1267207455;
+    
+}
+@enduml

@@ -35,22 +35,5 @@ public class Main {
         // вызов функции определения количества записей в таблице
         String res = "Найдено строк: " + avtorController.selectAvtors().size();
         System.out.println(new String(res.getBytes("UTF-8"), "windows-1251"));
-
-
-//        String MARKER = "__MARKER_I__";
-//        try {
-//            res = "Иванов";
-//            res = new String(res.getBytes("UTF-8"), "windows-1251");
-//            String CYRILLIC_I = new String("И".getBytes("UTF-8"), "windows-1251");
-//            res = res.replace(CYRILLIC_I, MARKER);
-//            System.out.println(CYRILLIC_I);
-//
-//            String s = new String("И".getBytes("windows-1251"), "UTF-8");
-//            System.out.println(s);
-//            res = res.replace(MARKER, s);
-//            System.out.println(res);
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
     }
 }
