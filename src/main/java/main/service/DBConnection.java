@@ -43,15 +43,4 @@ public class DBConnection {
 
         return rSet;
     }
-
-
-//    public int getUpdatedRows() {
-//        try {
-//            return statement.getUpdateCount();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return 0;
-//    }
 }

@@ -3,15 +3,17 @@ package main.dto.tables;
 import java.util.List;
 
 public class Reader {
-    int kod_bilet;
+    int kod_user;
     String fam;
     String name;
     Integer god_r;
     Integer gruppa;
-    List<String> phone;
+    String[] phone;
 
-    public Reader(Integer kod_bilet, String fam, String name, Integer god_r, Integer gruppa, List<String> phone) {
-        this.kod_bilet = kod_bilet;
+    public Reader() {}
+
+    public Reader(Integer kod_user, String fam, String name, Integer god_r, Integer gruppa, String[] phone) {
+        this.kod_user = kod_user;
         this.fam = fam;
         this.name = name;
         this.god_r = god_r;
@@ -19,12 +21,12 @@ public class Reader {
         this.phone = phone;
     }
 
-    public Integer getKod_bilet() {
-        return kod_bilet;
+    public Integer getKod_user() {
+        return kod_user;
     }
 
-    public void setKod_bilet(Integer kod_bilet) {
-        this.kod_bilet = kod_bilet;
+    public void setKod_user(Integer kod_user) {
+        this.kod_user = kod_user;
     }
 
     public String getFam() {
@@ -59,11 +61,11 @@ public class Reader {
         this.gruppa = gruppa;
     }
 
-    public List<String> getPhone() {
+    public String[] getPhone() {
         return phone;
     }
 
-    public void setPhone(List<String> phone) {
+    public void setPhone(String[] phone) {
         this.phone = phone;
     }
 }

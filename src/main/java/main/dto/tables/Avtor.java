@@ -15,6 +15,12 @@ public class Avtor {
         this.pol = pol;
     }
 
+    public Avtor(String fam, String name, int god_r) {
+        this.fam = fam;
+        this.name = name;
+        this.god_r = god_r;
+    }
+
     public int getId() {
         return id;
     }
